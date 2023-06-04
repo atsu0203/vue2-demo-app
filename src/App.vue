@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+    <h1>{{ message }}</h1>
+    <div>
+    <input type="file" accept="image/*" multiple>
+    </div>
+    <div v-if="url">
+  <img :src="url">
+</div>
+    
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
@@ -12,7 +20,21 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+  return {
+    message:"Try Preview!",
+    url:""
   }
+},
+  mounted(){
+  console.log(this.$refs.preview)
+},
+methods:{
+  uploadFile(){
+    console.log(this.$refs.preview.files[0])
+  }
+}
 }
 </script>
 
